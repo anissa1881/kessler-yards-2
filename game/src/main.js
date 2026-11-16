@@ -551,6 +551,30 @@ function runShot(name) {
   hud.setScore(match.state.score.player, match.state.score.bots);
   hud.setClock(match.state.timer, match.state.phase);
   hud.setAmmo(weapon.state.mag, weapon.state.reserve);
+  // The HUD pieces this session added: the grenade count, the charge bar and the kill feed. Without
+  // these the screenshots would show a game the code no longer is.
+  hud.setGrenades(match.state.grenades);
+  if (name === 'play' || name === 'end') {
+    // Give the bag something in it, so the count the HUD draws is actually on screen.
+    match.state.grenades.frag = 2;
+    match.state.grenades.smoke = 1;
+    match.state.grenades.flash = 1;
+    hud.setGrenades(match.state.grenades);
+  }
+  if (name === 'end' && match.state.planted) {
+    hud.setCharge('Defusing', 0.42);
+    hud.setFeed([
+      { id: 'a', text: 'You  Breacher  Rook', head: false },
+      { id: 'b', text: 'Vale  Compact  You', head: false },
+      { id: 'c', text: 'You  Standard  Ash  \u25cf', head: true },
+    ]);
+  } else if (name === 'play') {
+    hud.setCharge('', 0);
+    hud.setFeed([{ id: 'a', text: 'You  Breacher  Rook', head: false }]);
+  } else {
+    hud.setCharge('', 0);
+    hud.setFeed([]);
+  }
   paintTwiceThenReady();
 }
 
