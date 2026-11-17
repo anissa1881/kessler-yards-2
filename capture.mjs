@@ -4,8 +4,8 @@
 //   node capture.mjs --install  # first run: let Playwright fetch its own Chromium
 //
 // It serves game/ on a free port, opens ?shot=start, ?shot=play and ?shot=end, waits for the
-// game to report the frame is painted (window.__shotReady), and writes screenshots/1-start.jpg,
-// 2-play.jpg and 3-end.jpg. Then it checks every rule the gate applies to a screenshot: a whole
+// game to report the frame is painted (window.__shotReady), and writes screenshots/0-play.jpg,
+// 1-start.jpg and 2-end.jpg. Then it checks every rule the gate applies to a screenshot: a whole
 // JPEG, at most 256 KiB, long side at most 1280, short side at least 480.
 import { spawn } from 'node:child_process';
 import { createServer } from 'node:http';
@@ -21,9 +21,9 @@ const WIDTH = 1280;
 const HEIGHT = 720;
 
 const FRAMES = [
+  { name: '0-play.jpg', shot: 'play' },
   { name: '1-start.jpg', shot: 'start' },
-  { name: '2-play.jpg', shot: 'play' },
-  { name: '3-end.jpg', shot: 'end' },
+  { name: '2-end.jpg', shot: 'end' },
 ];
 
 const MIME = {
