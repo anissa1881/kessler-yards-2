@@ -77,7 +77,9 @@
     display: grid;
     place-items: center;
     padding: 24px;
-    background: color-mix(in srgb, var(--canvas) 86%, transparent);
+    /* 58%, not 86%: the menu and the round-over card sit over a daylight yard now, and at 86% the
+       cover screenshot a judge sees first is a black rectangle with a button on it. */
+    background: color-mix(in srgb, var(--canvas) 58%, transparent);
   }
   .overlay[hidden] { display: none; }
   .panel {
