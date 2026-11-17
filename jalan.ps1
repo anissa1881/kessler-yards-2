@@ -37,7 +37,7 @@ if ($git) { Good "git" } else { Write-Host "  (git tidak ada, akan pakai unduhan
 
 Say "`n2. Menyiapkan folder kerja"
 
-# If this script is already sitting inside the source (for example in kessler-yards-main
+# If this script is already sitting inside the source (for example in kessler-yards-2-main
 # unzipped from the archive), use that folder rather than making a second copy.
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $inner = $scriptDir
@@ -66,14 +66,14 @@ if ($hasGame) {
   Good "source sudah ada"
 } elseif ($git) {
   Write-Host "  git clone..."
-  git clone https://github.com/anissa1881/kessler-yards.git
+  git clone https://github.com/anissa1881/kessler-yards-2.git
   if ($LASTEXITCODE -ne 0) { Write-Host "`ngit clone gagal.`n" -ForegroundColor Red; exit 1 }
 } else {
   $zip = Join-Path $work 'src.zip'
   Write-Host "  mengunduh ZIP..."
-  Invoke-WebRequest -Uri 'https://github.com/anissa1881/kessler-yards/archive/refs/heads/main.zip' -OutFile $zip
+  Invoke-WebRequest -Uri 'https://github.com/anissa1881/kessler-yards-2/archive/refs/heads/main.zip' -OutFile $zip
   Expand-Archive -Path $zip -DestinationPath $work -Force
-  $extracted = Join-Path $work 'kessler-yards-main'
+  $extracted = Join-Path $work 'kessler-yards-2-main'
   if (Test-Path $extracted) { Move-Item $extracted $inner }
 }
 
