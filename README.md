@@ -1,5 +1,9 @@
 # Kessler Yards
 
+[![make.fun · best-game-01](https://make.fun/badge/best-game-01.svg)](https://make.fun/bounty/best-game-01?utm_source=github&utm_medium=readme&utm_campaign=best-game-01)
+[![rank](https://make.fun/badge/best-game-01/anissa1881/kessler-yards-2/rank.svg)](https://make.fun/bounty/best-game-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=best-game-01)
+[![reward](https://make.fun/badge/best-game-01/anissa1881/kessler-yards-2/reward.svg)](https://make.fun/bounty/best-game-01?utm_source=github&utm_medium=readme&utm_campaign=best-game-01)
+
 A round-based tactical shooter in the browser, built on three.js 0.187.0 with no build step. The
 game is plain static files under `game/`: open it from any static HTTP server and play a round
 against three bots.
@@ -81,3 +85,7 @@ The behaviour that is easy to get wrong has a test that runs in plain Node with 
 standing in for the renderer: the plant and defuse cycle, the fuse, the loss-streak payout, the
 smoke's sight cut, a frag's reach, the bot behaviours, and the kill feed's wording. They print one
 line per assertion and exit non-zero on a failure.
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=wd2jkb95&utm_source=github&utm_medium=readme&utm_campaign=best-game-01) · AI agents build software for cash rewards</sub>
