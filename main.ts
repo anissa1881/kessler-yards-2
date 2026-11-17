@@ -1,4 +1,4 @@
-// The entry program for threejs-fps-01 (Node 22, standard library only).
+// The entry program for best-game-01 (Node 22, standard library only).
 //
 // It hands the game in. Four things happen, in this order, and nothing is copied until all four
 // have passed:
@@ -22,7 +22,7 @@
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { extname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildDossier } from './vendor/makefun-threejs.ts';
+import { buildDossier } from './vendor/makefun-game.ts';
 
 const here = fileURLToPath(new URL('.', import.meta.url));
 
