@@ -2,7 +2,7 @@
 // ?shot=start|play|end with &seed=N sets up a deterministic frame for a capture, renders it
 // twice, then freezes it and sets window.__shotReady.
 import * as THREE from 'three';
-import { PALETTE } from './palette.js';
+import { PALETTE, YARD } from './palette.js';
 import { createWorld } from './world.js';
 import { createInput } from './input.js';
 import { createPlayer } from './player.js';
@@ -36,11 +36,17 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFShadowMap;
+// A daylight yard lights its lit faces above 1.0, which clamps to flat white without a curve. ACES
+// rolls those highlights off instead, so the back wall keeps its shadow detail next to the sun.
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 0.98;
 document.getElementById('game').appendChild(renderer.domElement);
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(PALETTE.canvas);
-scene.fog = new THREE.Fog(new THREE.Color(PALETTE.canvas), 22, 58);
+// The sky the yard sits under, and the haze that softens the far wall instead of swallowing it:
+// fog in the sky's own colour reads as distance, fog in the interface's charcoal reads as a bug.
+scene.background = new THREE.Color(YARD.haze);
+scene.fog = new THREE.Fog(new THREE.Color(YARD.haze), 34, 86);
 const camera = new THREE.PerspectiveCamera(74, window.innerWidth / window.innerHeight, 0.05, 160);
 scene.add(camera);
 

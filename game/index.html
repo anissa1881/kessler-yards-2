@@ -351,6 +351,15 @@
   #buy li.held { color: var(--accent); }
   #buy .hint { margin: 14px 0 0; font-size: 12px; color: var(--muted); }
 
+  /* The yard is daylight now, so every readout that sits straight on the scene carries its own dark
+     plate: pale text on pale concrete is unreadable, and a screenshot is judged on the readout. */
+  #clock, #ammo, #vitals, #score, #grenades {
+    background: color-mix(in srgb, var(--canvas) 72%, transparent);
+    border: 1px solid color-mix(in srgb, var(--hairline) 80%, transparent);
+    border-radius: 4px;
+    padding: 6px 10px;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     #hitmarker, #play { transition-duration: 0.01ms; }
   }
