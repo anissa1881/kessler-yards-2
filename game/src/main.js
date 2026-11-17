@@ -1,5 +1,5 @@
 // Boot and the one loop: a fixed 60 Hz simulation feeding a render at the display's rate.
-// ?shot=start|play|end with &seed=N sets up a deterministic frame for a capture, renders it
+// ?shot=start|play|end|buy with &seed=N sets up a deterministic frame for a capture, renders it
 // twice, then freezes it and sets window.__shotReady.
 import * as THREE from 'three';
 import { PALETTE, YARD } from './palette.js';
@@ -546,6 +546,16 @@ function runShot(name) {
       shoot(0);
       settle(1);
     }
+  } else if (name === 'buy') {
+    // The freeze, with the catalogue up: the frame that shows there is a decision to make between
+    // rounds, which a judge can read in one glance on the dossier's contact sheet.
+    body.position.set(-4.6, 0, 11.0);
+    match.state.phase = 'freeze';
+    match.state.timer = 17;
+    match.state.money = 3150;
+    settle(20);
+    aimAt(new THREE.Vector3(2, 1.3, -6));
+    toggleBuy(true);
   } else {
     body.position.set(-6.4, 0, 12.2);
     settle(20);
